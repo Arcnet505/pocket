@@ -36,7 +36,7 @@
   <!-- <h3 align="center">Pocket</h3> -->
 
   <p align="center">
-    A capture the flag pocket tool
+    A capture the flag <em>all-in-one</em> pocket tool
     <br />
     <!-- a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
