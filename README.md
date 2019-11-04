@@ -30,7 +30,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/pocket.png" alt="Logo" width="400px">
+    <img src="docs/images/pocket.png" alt="Logo" width="400px">
   </a>
 
   <!-- <h3 align="center">Pocket</h3> -->
