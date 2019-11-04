@@ -30,10 +30,10 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/pocket.png" alt="Logo">
+    <img src="images/pocket.png" alt="Logo" width="400px">
   </a>
 
-  <h3 align="center">Pocket</h3>
+  <!-- <h3 align="center">Pocket</h3> -->
 
   <p align="center">
     A capture the flag pocket tool
