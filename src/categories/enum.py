@@ -1,8 +1,8 @@
-import cmd
+from cmd2 import Cmd
 from colorama import Fore, Back, Style
 
 
-class Forensics(cmd.Cmd):
+class Enumeration(Cmd):
     intro = "Forensics\n"
     prompt = "[" + Fore.YELLOW + "forensics" + Style.RESET_ALL + "]>>> "
 
@@ -11,6 +11,10 @@ class Forensics(cmd.Cmd):
 
     def do_exit(self, line):
         "Exits back to main menu"
+        return True
+
+    def do_back(self, line):
+        "Returns back to previous prompt"
         return True
 
     def do_EOF(self, line):
@@ -27,4 +31,4 @@ class Forensics(cmd.Cmd):
 
 
 def forExec():
-    Forensics().cmdloop()
+    Enumeration().cmdloop()

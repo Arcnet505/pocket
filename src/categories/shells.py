@@ -1,19 +1,20 @@
-import cmd
+from cmd2 import Cmd
 from colorama import Fore, Back, Style
 import subprocess
 import http.server
 import socketserver
 
 
-class Shells(cmd.Cmd):
+class Shells(Cmd):
     intro = "Common Tools for Reverse Shells\n"
-    prompt = "[" + Fore.YELLOW + "shells" + Style.RESET_ALL + "]>>> "
+    prompt = "[" + Fore.YELLOW + "shells" + Style.RESET_ALL + "] >>> "
 
     def do_listen(self, line):
         PORT = line
         subprocess.call('nc -lvnp {}'.format(PORT))
 
     def do_pythonws(self, line):
+        "Start a python HTTP web server by running 'pythonws PORT'"
         PORT = int(line)
 
         Handler = http.server.SimpleHTTPRequestHandler
@@ -24,6 +25,10 @@ class Shells(cmd.Cmd):
 
     def do_exit(self, line):
         "Exits back to main menu"
+        return True
+
+    def do_back(self, line):
+        "Returns back to previous prompt"
         return True
 
     def do_EOF(self, line):

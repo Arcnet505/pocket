@@ -1,14 +1,19 @@
-import cmd
+from cmd2 import Cmd
 from colorama import Fore, Back, Style
 import subprocess
+import sys
 
 
-class PrivEsc(cmd.Cmd):
+class PrivEsc(Cmd):
     intro = "Tools for Priviledge Escalation\n"
-    prompt = "[" + Fore.YELLOW + "shells" + Style.RESET_ALL + "]>>> "
+    prompt = "[" + Fore.YELLOW + "privesc" + Style.RESET_ALL + "]>>> "
 
     def do_exit(self, line):
         "Exits back to main menu"
+        return True
+
+    def do_back(self, line):
+        "Returns back to previous prompt"
         return True
 
     def do_EOF(self, line):

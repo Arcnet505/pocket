@@ -1,6 +1,6 @@
-import cmd
+from cmd2 import Cmd
 from utilities.frogs import getFrog
-from categories.forensics import forExec
+from categories.enum import forExec
 from categories.shells import shellExec
 from categories.privesc import privEscExec
 from colorama import Fore, Back, Style
@@ -8,9 +8,9 @@ from colorama import Fore, Back, Style
 categories = [
     "   ["
     + Fore.RED
-    + "forensics"
+    + "enum"
     + Style.RESET_ALL
-    + "]: Forensic tools such as nmap, ping, etc.\n",
+    + "]: Enumeration tools\n",
 
     "   [ "
     + Fore.BLUE
@@ -38,7 +38,7 @@ def printIntro():
     return (intro)
 
 
-class Main(cmd.Cmd):
+class Main(Cmd):
 
     intro = printIntro()
     prompt = "[" + Fore.YELLOW + "home" + Style.RESET_ALL + "] >>> "
@@ -57,9 +57,11 @@ class Main(cmd.Cmd):
 
     def do_cmdi(self, line):
         "Command Injection utilities"
+        cmdiExec()
 
     def do_sqli(self, line):
         "SQL Injection tools"
+        sqliExec()
 
     def do_greet(self, line):
         "Gives a little greeting"
