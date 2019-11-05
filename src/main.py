@@ -3,6 +3,7 @@ from utilities.frogs import getFrog
 from categories.forensics import forExec
 from categories.web import webExec
 from categories.crack import crackExec
+from categories.shells import shellExec
 from colorama import Fore, Back, Style
 
 categories = [
@@ -39,6 +40,16 @@ class Main(cmd.Cmd):
     def do_shells(self, line):
         "Reverse shell tools"
         shellExec()
+
+    def do_privesc(self, line):
+        "Privilege Escalation tools"
+        privEscExec()
+
+    def do_cmdi(self, line):
+        "Command Injection utilities"
+
+    def do_sqli(self, line):
+        "SQL Injection tools"
 
     def do_crack(self, line):
         "Cracking utilities"

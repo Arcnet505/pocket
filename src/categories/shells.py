@@ -1,13 +1,27 @@
 import cmd
 from colorama import Fore, Back, Style
+import subprocess
+import SimpleHTTPServer
+import socketserver
 
 
 class Shells(cmd.Cmd):
-    intro = "Forensics\n"
-    prompt = "[" + Fore.YELLOW + "forensics" + Style.RESET_ALL + "]>>> "
+    intro = "Common Tools for Reverse Shells\n"
+    prompt = "[" + Fore.YELLOW + "shells" + Style.RESET_ALL + "]>>> "
 
-    def do_woohoo(self, line):
-        print("Woohoo this works")
+    def do_listen(self, line):
+        PORT = line
+        subprocess.call('nc -lvnp {}'.format(port))
+
+    def do_pythonws(self, line):
+        PORT = line
+
+        Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+
+        httpd = socketserver.TCPServer(("", PORT), Handler)
+
+        print "Serving at port", PORT
+        httpd.serve_forever()
 
     def do_exit(self, line):
         "Exits back to main menu"
@@ -27,4 +41,4 @@ class Shells(cmd.Cmd):
 
 
 def shellExec():
-    Forensics().cmdloop()
+    Shells().cmdloop()
