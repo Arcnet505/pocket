@@ -1,15 +1,18 @@
 import cmd
 from frogs import getFrog
+from categories.forensics import forExec
 
-
-class main(cmd.Cmd):
+class Main(cmd.Cmd):
 
     intro = getFrog()
-    prompt = ">>> "
+    prompt = "[home]>>> "
+
+    def do_forensics(self, line):
+        forExec()
 
     def do_greet(self, line):
         "Gives a little greeting"
-        print("hello")
+        print("Hello " + line)
 
     def do_exit(self, line):
         "Exits the application"
@@ -23,12 +26,13 @@ class main(cmd.Cmd):
 
     def postloop(self):
         "Exiting message"
-        print("Exiting.....\n")
+        print("Exiting pocket...\n")
 
     def emptyline(self):
         "Does nothing on emptyline"
         pass
 
 
+
 if __name__ == '__main__':
-    main().cmdloop()
+    Main().cmdloop()
