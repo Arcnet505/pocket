@@ -3,17 +3,23 @@ from frogs import getFrog
 from categories.forensics import forExec
 from categories.web import webExec
 from categories.crack import crackExec
+from colorama import Fore, Back, Style
 
 categories = [
-    "  [forensics]: Forensic tools such as nmap, ping, etc.\n"
-    "  [  crack  ]: Cracking tools for cracking zips, hashes, etc.\n"
-    "  [   web   ]: Web based tools for DNS spoofing, sql injection, etc.\n"
+    "   [" + Fore.RED + "forensics" + Style.RESET_ALL +
+    "]: Forensic tools such as nmap, ping, etc.\n"
+    "   [  " + Fore.RED + "crack" + Style.RESET_ALL +
+    "  ]: Cracking tools for cracking zips, hashes, etc.\n"
+    "   [   " + Fore.RED + "web" + Style.RESET_ALL +
+    "   ]: Web based tools for DNS spoofing, sql injection, etc.\n"
 ]
 
 
 def printIntro():
-    intro = getFrog() + "\n"
-    intro += "Tools: \n"
+    intro = ""
+
+    intro += Fore.GREEN + getFrog() + Style.RESET_ALL + "\n"
+    intro += " Tools: \n"
     for cat in categories:
         intro += (cat)
 
@@ -24,15 +30,18 @@ def printIntro():
 class Main(cmd.Cmd):
 
     intro = printIntro()
-    prompt = "[home]>>> "
+    prompt = "[" + Fore.YELLOW + "home" + Style.RESET_ALL + "]> "
 
     def do_forensics(self, line):
+        "Forensic utilities"
         forExec()
 
     def do_crack(self, line):
+        "Cracking utilities"
         crackExec()
 
     def do_web(self, line):
+        "Web based utilities"
         webExec()
 
     def do_greet(self, line):

@@ -1,9 +1,10 @@
 import cmd
+from colorama import Fore, Back, Style
 
 
 class Web(cmd.Cmd):
     intro = "Web\n"
-    prompt = "[web]>>> "
+    prompt = "[" + Fore.YELLOW + "web" + Style.RESET_ALL + "]> "
 
     def do_woohoo(self, line):
         print("Woohoo this works")

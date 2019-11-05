@@ -1,8 +1,10 @@
 import cmd
+from colorama import Fore, Back, Style
+
 
 class Forensics(cmd.Cmd):
     intro = "Forensics\n"
-    prompt = "[forensics]>>> "
+    prompt = "[" + Fore.YELLOW + "forensics" + Style.RESET_ALL + "] > "
 
     def do_woohoo(self, line):
         print("Woohoo this works")
@@ -22,6 +24,7 @@ class Forensics(cmd.Cmd):
     def emptyline(self):
         "Does nothing on emptyline"
         pass
+
 
 def forExec():
     Forensics().cmdloop()

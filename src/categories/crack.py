@@ -1,9 +1,10 @@
 import cmd
+from colorama import Fore, Back, Style
 
 
 class Crack(cmd.Cmd):
     intro = "Crack\n"
-    prompt = "[crack]>>> "
+    prompt = "[" + Fore.YELLOW + "crack" + Style.RESET_ALL + "]> "
 
     def do_woohoo(self, line):
         print("Woohoo this works")
