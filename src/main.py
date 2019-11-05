@@ -1,5 +1,5 @@
 import cmd
-from frogs import getFrog
+from utilities.frogs import getFrog
 from categories.forensics import forExec
 from categories.web import webExec
 from categories.crack import crackExec
