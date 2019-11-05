@@ -2,11 +2,11 @@ import random
 
 
 def getFrog():
-    x = random.randint(0, 2)
+    x = random.randint(0, 3)
     frogs = {
         0: """
          @..@         /===================\\
-        (\\--/)        |     Welcome to    |
+        (\\--/)       |     Welcome to    |
        (.>__<.)       |       Pocket      |
        ^^^  ^^^       \\===================/
    \n""",
@@ -21,6 +21,12 @@ def getFrog():
         (--)          |     Welcome to    |
        ( || )         |       Pocket      |
        ^^~~^^         \\===================/
-   \n"""
+   \n""",
+        3: """
+         (0) (0)      /===================\\
+        ( ----- )     |     Welcome to    |
+         [ | | ]      |       Pocket      |
+        ~^~   ~^~     \\===================/
+    \n"""
     }
     return(frogs.get(x))
