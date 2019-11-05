@@ -19,7 +19,7 @@ categories = [
     + "  ]: Reverse Shell tools\n",
 
     "   [ "
-    + Fore.BLUE
+    + Fore.GREEN
     + "privesc"
     + Style.RESET_ALL
     + " ]: Privilege Escalation tools\n"

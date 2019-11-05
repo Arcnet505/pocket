@@ -14,7 +14,7 @@ class Shells(cmd.Cmd):
         subprocess.call('nc -lvnp {}'.format(PORT))
 
     def do_pythonws(self, line):
-        PORT = int(line[0])
+        PORT = int(line)
 
         Handler = http.server.SimpleHTTPRequestHandler
 
