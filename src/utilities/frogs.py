@@ -2,7 +2,7 @@ import random
 
 
 def getFrog():
-    x = random.randint(0, 3)
+    x = random.randint(0, 2)
     frogs = {
         0: """
          @..@         /===================\\
