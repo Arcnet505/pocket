@@ -1,18 +1,28 @@
 import cmd
 from utilities.frogs import getFrog
 from categories.forensics import forExec
-from categories.web import webExec
-from categories.crack import crackExec
 from categories.shells import shellExec
+from categories.privesc import privEscExec
 from colorama import Fore, Back, Style
 
 categories = [
-    "   [" + Fore.RED + "forensics" + Style.RESET_ALL +
-    "]: Forensic tools such as nmap, ping, etc.\n"
-    "   [  " + Fore.RED + "crack" + Style.RESET_ALL +
-    "  ]: Cracking tools for cracking zips, hashes, etc.\n"
-    "   [   " + Fore.RED + "web" + Style.RESET_ALL +
-    "   ]: Web based tools for DNS spoofing, sql injection, etc.\n"
+    "   ["
+    + Fore.RED
+    + "forensics"
+    + Style.RESET_ALL
+    + "]: Forensic tools such as nmap, ping, etc.\n",
+
+    "   [ "
+    + Fore.BLUE
+    + "shells"
+    + Style.RESET_ALL
+    + "  ]: Reverse Shell tools\n",
+
+    "   [ "
+    + Fore.BLUE
+    + "privesc"
+    + Style.RESET_ALL
+    + " ]: Privilege Escalation tools\n"
 ]
 
 
@@ -50,14 +60,6 @@ class Main(cmd.Cmd):
 
     def do_sqli(self, line):
         "SQL Injection tools"
-
-    def do_crack(self, line):
-        "Cracking utilities"
-        crackExec()
-
-    def do_web(self, line):
-        "Web based utilities"
-        webExec()
 
     def do_greet(self, line):
         "Gives a little greeting"

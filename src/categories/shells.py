@@ -1,7 +1,7 @@
 import cmd
 from colorama import Fore, Back, Style
 import subprocess
-import SimpleHTTPServer
+import http.server
 import socketserver
 
 
@@ -11,17 +11,16 @@ class Shells(cmd.Cmd):
 
     def do_listen(self, line):
         PORT = line
-        subprocess.call('nc -lvnp {}'.format(port))
+        subprocess.call('nc -lvnp {}'.format(PORT))
 
     def do_pythonws(self, line):
-        PORT = line
+        PORT = int(line[0])
 
-        Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+        Handler = http.server.SimpleHTTPRequestHandler
 
-        httpd = socketserver.TCPServer(("", PORT), Handler)
-
-        print "Serving at port", PORT
-        httpd.serve_forever()
+        with socketserver.TCPServer(("", PORT), Handler) as httpd:
+            print("Serving at port: " + PORT)
+            httpd.serve_forever()
 
     def do_exit(self, line):
         "Exits back to main menu"
