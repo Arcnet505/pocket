@@ -2,9 +2,9 @@ import cmd
 from colorama import Fore, Back, Style
 
 
-class Crack(cmd.Cmd):
-    intro = "Crack\n"
-    prompt = "[" + Fore.YELLOW + "crack" + Style.RESET_ALL + "]>>> "
+class Shells(cmd.Cmd):
+    intro = "Forensics\n"
+    prompt = "[" + Fore.YELLOW + "forensics" + Style.RESET_ALL + "]>>> "
 
     def do_woohoo(self, line):
         print("Woohoo this works")
@@ -26,5 +26,5 @@ class Crack(cmd.Cmd):
         pass
 
 
-def crackExec():
-    Crack().cmdloop()
+def shellExec():
+    Forensics().cmdloop()

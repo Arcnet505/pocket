@@ -30,11 +30,15 @@ def printIntro():
 class Main(cmd.Cmd):
 
     intro = printIntro()
-    prompt = "[" + Fore.YELLOW + "home" + Style.RESET_ALL + "]> "
+    prompt = "[" + Fore.YELLOW + "home" + Style.RESET_ALL + "] >>> "
 
-    def do_forensics(self, line):
-        "Forensic utilities"
+    def do_enum(self, line):
+        "Enumeration utilities"
         forExec()
+
+    def do_shells(self, line):
+        "Reverse shell tools"
+        shellExec()
 
     def do_crack(self, line):
         "Cracking utilities"
