@@ -54,15 +54,15 @@ class Main(Cmd):
         "Gives a little greeting"
         print("Hello " + line)
 
-    def do_exit(self, line):
-        "Exits the application"
-        "Exit"
-        return True
+    # def do_exit(self, line):
+    #     "Exits the application"
+    #     "Exit"
+    #     return True
 
-    def do_EOF(self, line):
-        "Exits the application"
-        "Exit"
-        return True
+    # def do_EOF(self, line):
+    #     "Exits the application"
+    #     "Exit"
+    #     return True
 
     def postloop(self):
         "Exiting message"
@@ -74,4 +74,5 @@ class Main(Cmd):
 
 
 if __name__ == '__main__':
-    Main().cmdloop()
+    import sys
+    sys.exit(Main().cmdloop())
