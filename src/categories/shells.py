@@ -13,47 +13,31 @@ class Shells(Cmd):
 
     def do_listen(self, line):
         "Start a listener by running 'listen PORT'"
+        HOST = '0.0.0.0'
         PORT = int(line)
 
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect(('localhost', PORT))
+        server_socket = socket.socket(socket.AF_INET,
+                                      socket.SOCK_STREAM)  # create TCP socket
+        server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,
+                                 1)  # prevent timeout
+        server_socket.bind((HOST, PORT))
+        server_socket.listen(5)  # max 5 connections
 
-        sock.sendall(('GET / HTTP/1.1\nHost: google.com\n\n').encode())
-        time.sleep(0.5)
-        sock.shutdown(socket.SHUT_WR)
-
-        res = ""
+        client_socket, (
+            client_ip,
+            client_port) = server_socket.accept()  # accept connections
 
         while True:
-            data = sock.recv(1024)
-            if (not data):
+            cmd = raw_input("[rev-shell] >")
+            client_socket.send(cmd)
+
+            if (cmd == "quit"):
                 break
-            res += data.decode()
 
-        print(res)
+            data = client_socket.recv(1024)
+            print(data)
 
-        print("Connection closed.")
-        sock.close()
-
-        while 1:
-            buf = ""
-            shouldClose = False
-
-            # collect the request
-            inp = input("")
-            while inp != "":
-                # stop processing if we want the conneciton to close
-                if (inp == "Connection: close"):
-                    shouldClose = True
-                buf += inp + "\n"
-                inp = input("")
-
-            buf += "\n"
-
-            # do_listen(port buf.encode())
-
-            if (shouldClose):
-                break
+        client_socket.close()
 
     def do_webserver(self, line):
         "Start a python HTTP web server by running 'webserver PORT'"
