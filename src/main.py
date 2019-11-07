@@ -6,23 +6,10 @@ from categories.privesc import privEscExec
 from colorama import Fore, Back, Style
 
 categories = [
-    "   [ "
-    + Fore.RED
-    + "enum"
-    + Style.RESET_ALL
-    + " ]: Enumeration tools\n",
-
-    "   [ "
-    + Fore.BLUE
-    + "shells"
-    + Style.RESET_ALL
-    + "  ]: Reverse Shell tools\n",
-
-    "   [ "
-    + Fore.GREEN
-    + "privesc"
-    + Style.RESET_ALL
-    + " ]: Privilege Escalation tools\n"
+    "   [" + Fore.RED + "enum" + Style.RESET_ALL + "]: Enumeration tools\n",
+    "   [ " + Fore.BLUE + "shells" + Style.RESET_ALL +
+    "  ]: Reverse Shell tools\n", "   [ " + Fore.GREEN + "privesc" +
+    Style.RESET_ALL + " ]: Privilege Escalation tools\n"
 ]
 
 
