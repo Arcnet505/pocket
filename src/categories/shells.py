@@ -28,8 +28,8 @@ class Shells(Cmd):
             client_port) = server_socket.accept()  # accept connections
 
         while True:
-            cmd = raw_input("[rev-shell] >")
-            client_socket.send(cmd)
+            cmd = input("[rev-shell] > ")
+            client_socket.send(cmd.encode())
 
             if (cmd == "quit"):
                 break
