@@ -1,9 +1,12 @@
+import sys
+
 from cmd2 import Cmd
-from utilities.frogs import getFrog
-from categories.enum import forExec
-from categories.shells import shellExec
-from categories.privesc import privEscExec
 from colorama import Fore, Back, Style
+
+from pocket.utilities.frogs import getFrog
+from pocket.categories.enum import forExec
+from pocket.categories.shells import shellExec
+from pocket.categories.privesc import priv_esc_exec
 
 categories = [
     "   [" + Fore.RED + "enum" + Style.RESET_ALL + "]: Enumeration tools\n",
@@ -14,19 +17,16 @@ categories = [
 
 
 def printIntro():
-    intro = ""
-
-    intro += Fore.GREEN + getFrog() + Style.RESET_ALL + "\n"
+    intro = Fore.GREEN + getFrog() + Style.RESET_ALL + "\n"
     intro += " Tools: \n"
     for cat in categories:
-        intro += (cat)
+        intro += cat
 
     intro += "\n"
-    return (intro)
+    return intro
 
 
 class Main(Cmd):
-
     intro = printIntro()
     prompt = "[" + Fore.YELLOW + "home" + Style.RESET_ALL + "] >>> "
 
@@ -40,7 +40,7 @@ class Main(Cmd):
 
     def do_privesc(self, line):
         "Privilege Escalation tools"
-        privEscExec()
+        priv_esc_exec()
 
     def do_cmdi(self, line):
         "Command Injection utilities"
