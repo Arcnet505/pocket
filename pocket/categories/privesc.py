@@ -1,7 +1,5 @@
 from cmd2 import Cmd
 from colorama import Fore, Back, Style
-import subprocess
-import sys
 
 
 class PrivEsc(Cmd):
@@ -29,5 +27,5 @@ class PrivEsc(Cmd):
         pass
 
 
-def privEscExec():
+def priv_esc_exec():
     PrivEsc().cmdloop()
