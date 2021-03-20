@@ -60,7 +60,7 @@ IPy==0.83
 ipython==5.8.0
 ipython-genutils==0.2.0
 itsdangerous==0.24
-Jinja2==2.10.1
+Jinja2==2.11.3
 jsonschema==2.6.0
 jupyter-core==4.6.0
 kaitaistruct==0.8
