@@ -105,7 +105,7 @@ protobuf==3.6.1
 psycopg2==2.8.3
 pyasn1==0.4.2
 pycairo==1.16.2
-pycares==2.1.1
+pycares==4.2.0
 pycrypto==2.6.1
 pycryptodomex==3.6.1
 pycups==1.9.73
