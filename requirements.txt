@@ -101,7 +101,7 @@ pluginbase==1.0.0
 ply==3.11
 promise==2.2
 prompt-toolkit==1.0.15
-protobuf==3.6.1
+protobuf==3.18.3
 psycopg2==2.8.3
 pyasn1==0.4.2
 pycairo==1.16.2
